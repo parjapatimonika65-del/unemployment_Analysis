@@ -6,15 +6,18 @@ st.title("Unemployment Analysis in India")
 
 df = pd.read_csv("unemployment in india.csv")
 
-st.write(df.head())
-
-# column names clean
+# Clean column names
 df.columns = df.columns.str.strip()
+
+# Convert date
+df["Date"] = pd.to_datetime(df["Date"], dayfirst=True)
+
+st.write(df.head())
 
 plt.figure(figsize=(10,5))
 
 plt.plot(
-    df["Date"],
+    df["Date"].astype(str),
     df["Estimated Unemployment Rate (%)"]
 )
 
