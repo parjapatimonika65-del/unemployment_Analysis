@@ -8,8 +8,15 @@ df = pd.read_csv("unemployment in india.csv")
 
 st.write(df.head())
 
+# column names clean
+df.columns = df.columns.str.strip()
+
 plt.figure(figsize=(10,5))
-plt.plot(df["Date"], df["Estimated Unemployment Rate (%)"])
+
+plt.plot(
+    df["Date"],
+    df["Estimated Unemployment Rate (%)"]
+)
 
 plt.xticks(rotation=45)
 
